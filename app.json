@@ -11,6 +11,15 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "plugins": [
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Lejoni qe aplikacioni t'iu qaset librarise se fotove.",
+          "savePhotosPermission": "Lejoni qe aplikacioni te ruaje foto."
+        }
+      ]
+    ],
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -18,16 +27,35 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Ky aplikacion perdore kameren per skanim te barkodeve te produkteve.",
+        "NSPhotoLibraryUsageDescription": "Lejoni qe aplikacioni t'iu qaset librarise se fotove.",
+        "NSPhotoLibraryAddUsageDescription": "Lejoni qe aplikacioni te ruaje foto."
+      },
+      "bundleIdentifier": "com.arsimkosumi.SkanoProduktet"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "permissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ],
+      "package": "com.arsimkosumi.SkanoProduktet"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b650927d-e36e-4594-a86f-574d122210eb"
+      }
     }
   }
 }
