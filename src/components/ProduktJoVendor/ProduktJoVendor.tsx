@@ -1,0 +1,27 @@
+import { Image, StyleSheet, Text, View } from "react-native";
+import { cancel } from "../../constants/images";
+
+const ProduktJoVendor = () => {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text style={styles.internationalProduct}>{"Produkt jo vendor."}</Text>
+      <Image style={styles.cancelIcon} source={cancel} />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  cancelIcon: {
+    marginTop: 20,
+    width: 100,
+    height: 100,
+  },
+
+  internationalProduct: {
+    marginTop: 10,
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+});
+
+export default ProduktJoVendor;

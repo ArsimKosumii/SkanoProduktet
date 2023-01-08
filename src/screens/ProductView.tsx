@@ -4,6 +4,8 @@ import VerticalScrollImages from "./../components/VerticalScrollImages/VerticalS
 import { AlbanianFlag, besaBese, cancel } from "../constants/images";
 import { containsOnlyNumbers } from "../global/functions";
 import { percentHeight } from "../variables";
+import InvalidBarCode from "../components/InvalidBarCode/InvalidBarCode";
+import ProduktJoVendor from "../components/ProduktJoVendor/ProduktJoVendor";
 
 const ProductView = (props: any) => {
   const { productCode } = props.route.params;
@@ -17,17 +19,13 @@ const ProductView = (props: any) => {
   }, [productCode]);
 
   if (!validBarCode) {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text style={styles.internationalProduct}>{"Barkod jo-valid."}</Text>
-        <Image style={styles.cancelIcon} source={cancel} />
-      </View>
-    );
+    return <InvalidBarCode />;
   }
 
   if (productCode?.startsWith("860")) {
     return (
       <ScrollView contentContainerStyle={styles.container}>
+        <Text style={styles.serbianProductHeading}>{"Produkt Serb!"}</Text>
         <View style={styles.content}>
           <Image
             resizeMode="contain"
@@ -38,6 +36,11 @@ const ProductView = (props: any) => {
           <VerticalScrollImages />
 
           <Image style={styles.albanianFlag} source={AlbanianFlag} />
+          <Text style={styles.albanianFlagText}>
+            {
+              "Bojkoto këtë produkt, hatri i këtij Flamuri dhe gjithë Shqipërisë"
+            }
+          </Text>
         </View>
       </ScrollView>
     );
@@ -54,12 +57,7 @@ const ProductView = (props: any) => {
     );
   }
 
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text style={styles.internationalProduct}>{"Produkt jo vendor."}</Text>
-      <Image style={styles.cancelIcon} source={cancel} />
-    </View>
-  );
+  return <ProduktJoVendor />;
 };
 
 const styles = StyleSheet.create({
@@ -80,9 +78,9 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
 
-  serbianProductHeadingAndText: {
-    width: "100%",
-    paddingHorizontal: 15,
+  serbianProductHeading: {
+    fontSize: 20,
+    fontWeight: "bold",
   },
 
   albanianFlag: {
@@ -97,16 +95,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-  cancelIcon: {
-    marginTop: 20,
-    width: 100,
-    height: 100,
-  },
-
-  internationalProduct: {
-    marginTop: 10,
+  albanianFlagText: {
     fontSize: 20,
-    fontWeight: "bold",
+    textAlign: "center",
+    padding: 20,
+    marginBottom: 50,
   },
 });
 
