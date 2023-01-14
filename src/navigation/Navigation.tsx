@@ -1,5 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { containsOnlyNumbers } from "../global/functions";
+import { containsOnlyNumbers } from "../logic/functions";
 import BarCodeScreen from "../screens/BarCodeScreen";
 import ProductView from "../screens/ProductView";
 
